@@ -1,14 +1,20 @@
 
-import './App.css'
-import Galeria from './components/Galeria';
+import React from 'react';
+import { FavoritesProvider } from './context/FavoritesContext';
+import Gallery from './components/Gallery';
+import Favorites from './components/Favorites';
+import './index.css'
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <Galeria />
-    </>
+    <FavoritesProvider>
+      <div className="App">
+        <Gallery />
+        <Favorites />
+      </div>
+    </FavoritesProvider>
   );
-}
+};
 
-export default App
+export default App;
+

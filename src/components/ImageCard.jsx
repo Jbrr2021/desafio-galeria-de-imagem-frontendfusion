@@ -1,20 +1,42 @@
 import React from 'react';
 import { useFavorites } from '../context/FavoritesContext';
-import ImageCard from './ImageCard';
 
-const Favorites = () => {
-  const { favorites } = useFavorites();
+const ImageCard = ({ image }) => {
+  const { addFavorite, removeFavorite, favorites } = useFavorites();
+  const isFavorited = favorites.some(fav => fav.id === image.id);
+
+  const handleFavorite = () => {
+    if (isFavorited) {
+      removeFavorite(image.id);
+    } else {
+      addFavorite(image);
+    }
+  };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Favoritos</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {favorites.map(image => (
-          <ImageCard key={image.id} image={image} />
-        ))}
+    <div className="border rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 m-2 w-48"> {/* Definindo largura fixa */}
+      <div className="w-full h-32 rounded-lg overflow-hidden">
+        <img 
+          src={image.download_url} 
+          alt={image.author} 
+          className="w-full h-full object-cover rounded-lg" 
+        />
+      </div>
+      <div className="p-2">
+        <h3 className="font-bold text-sm">{image.author}</h3>
+        <button 
+          onClick={handleFavorite} 
+          className={`mt-1 px-3 py-1 ${isFavorited ? 'bg-red-500' : 'bg-blue-500'} text-white rounded text-xs`}>
+          {isFavorited ? 'Remover Favorito' : 'Adicionar Favorito'}
+        </button>
       </div>
     </div>
   );
 };
 
-export default Favorites;
+export default ImageCard;
+
+
+
+
+

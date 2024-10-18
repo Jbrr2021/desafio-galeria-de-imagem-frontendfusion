@@ -5,15 +5,42 @@
   text-align: center;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Define o layout da galeria */
+  gap: 1.5rem; /* Espaçamento entre as imagens */
+  padding: 2rem;
+}
+
+.image-card {
+  border-radius: 10px; /* Bordas levemente arredondadas */
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover {
+  transform: scale(1.05); /* Aumenta levemente a imagem ao passar o mouse */
+}
+
+.image-card img {
+  width: 100%; /* Mantém a responsividade da imagem dentro do card */
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover; /* Mantém o aspecto da imagem sem distorção */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -40,3 +67,10 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
