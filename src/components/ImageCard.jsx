@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; // Importa PropTypes
 import { useFavorites } from '../context/FavoritesContext';
 
 const ImageCard = ({ image }) => {
@@ -14,19 +15,17 @@ const ImageCard = ({ image }) => {
   };
 
   return (
-    <div className="border rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 m-2 w-48"> {/* Definindo largura fixa */}
-      <div className="w-full h-32 rounded-lg overflow-hidden">
-        <img 
-          src={image.download_url} 
-          alt={image.author} 
-          className="w-full h-full object-cover rounded-lg" 
-        />
-      </div>
-      <div className="p-2">
-        <h3 className="font-bold text-sm">{image.author}</h3>
+    <div className="max-w-xs border rounded-lg overflow-hidden shadow-lg mx-auto">
+      <img 
+        src={image.download_url} 
+        alt={image.author} 
+        className="w-full h-48 object-cover" 
+      />
+      <div className="p-4">
+        <h3 className="font-bold">{image.author}</h3>
         <button 
           onClick={handleFavorite} 
-          className={`mt-1 px-3 py-1 ${isFavorited ? 'bg-red-500' : 'bg-blue-500'} text-white rounded text-xs`}>
+          className={`mt-2 px-4 py-2 ${isFavorited ? 'bg-red-500' : 'bg-blue-500'} text-white rounded`}>
           {isFavorited ? 'Remover Favorito' : 'Adicionar Favorito'}
         </button>
       </div>
@@ -34,7 +33,19 @@ const ImageCard = ({ image }) => {
   );
 };
 
+// Adicionando validações de PropTypes para garantir que as propriedades estejam presentes e no formato correto
+ImageCard.propTypes = {
+  image: PropTypes.shape({
+    id: PropTypes.string.isRequired,           // 'id' deve ser uma string obrigatória
+    download_url: PropTypes.string.isRequired, // 'download_url' deve ser uma string obrigatória
+    author: PropTypes.string.isRequired,       // 'author' deve ser uma string obrigatória
+  }).isRequired,                               // O objeto 'image' em si é obrigatório
+};
+
 export default ImageCard;
+
+
+
 
 
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ImageCard from './ImageCard';
 
-const Gallery = () => {
+
+function Gallery() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -17,7 +18,9 @@ const Gallery = () => {
       ))}
     </div>
   );
-};
+}
+
 
 export default Gallery;
+
 
