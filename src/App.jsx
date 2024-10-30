@@ -1,16 +1,16 @@
-
-import './App.css'
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import ImageCard from './Components/ImageCard'; // Ajuste o nome do arquivo conforme necessário
+import ImageCardDetails from './Components/ImageCardDetails';
 
 function App() {
-
   return (
-    <>
-      <main>
-        <h1>Seja bem vindo! :)</h1>
-        <p>Desafio de Galeria de Imagens - Processo Seletivo Frontend Fusion</p>
-      </main>
-    </>
+    <Routes>
+        <Route path="/" element={<ImageCard heading="Image Collections" />} />
+        <Route path="/detailPage/:id" element={<ImageCardDetails />} />
+    </Routes>
   );
 }
 
-export default App
+export default App;
+
