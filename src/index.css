@@ -1,8 +1,69 @@
-@tailwind base;
-@tailwind components;
+/* styles.css */
 
-.custom-box-shadow {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+/* Corpo da página */
+body {
+  background-color: #f3f4f6; /* Fundo claro */
+  color: #4a90e2; /* Texto escuro */
 }
 
-@tailwind utilities;
+/* Container principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título da galeria */
+h1 {
+  color: #ff6b6b; /* Título em vermelho claro */
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Estilo das imagens */
+.image-container {
+  border: 1px solid #e0e0e0; /* Borda clara */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo do botão de salvar */
+.save-button {
+  background-color: #ff6b6b; /* Vermelho claro */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #ff4c4c; /* Vermelho escuro */
+}
+
+/* Estilo do botão de carregar mais imagens */
+.load-more-button {
+  background-color: #4a90e2; /* Azul claro */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.load-more-button:hover {
+  background-color: #357ab7; /* Azul mais escuro */
+}
+
+/* Estilo do link para favoritos */
+.link-favorites {
+  color: #4a90e2; /* Azul claro */
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+  

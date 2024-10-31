@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const SearchInput = ({ value, onChange }) => (
   <input
     type="text"
-    placeholder="Procurar por imagem"
+    placeholder="Pesquise por imagem"
     value={value}
     onChange={onChange}
     className="border border-gray-300 rounded px-2 py-1 w-full md:w-64 focus:outline-none focus:ring focus:border-blue-500 text-black"
