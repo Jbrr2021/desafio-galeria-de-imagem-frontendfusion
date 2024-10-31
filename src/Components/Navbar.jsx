@@ -30,12 +30,12 @@ const AuthorSelect = ({ authors, value, onChange }) => (
 
 const Navbar = ({ searchTerm, handleSearch, authors, handleAuthorChange }) => {
   return (
-    <nav className="p-4 bg-gradient-to-r from-red-900 to-red-600 shadow-lg rounded">
+    <nav className="p-4 bg-gradient-to-r from-blue-600 to-blue-400 shadow-lg rounded">
       <div className="container mx-auto flex justify-between items-center">
         <SearchInput value={searchTerm} onChange={handleSearch} />
         <AuthorSelect authors={authors} value={searchTerm} onChange={handleAuthorChange} />
         <Link to="/saved" className="ml-2">
-          <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700">
+          <button className="transition duration-300 ease-in-out bg-green-500 text-white px-3 py-1 rounded hover:bg-green-700">
             FAVORITOS
           </button>
         </Link>
@@ -45,3 +45,4 @@ const Navbar = ({ searchTerm, handleSearch, authors, handleAuthorChange }) => {
 };
 
 export default Navbar;
+

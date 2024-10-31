@@ -46,14 +46,16 @@ const GalleryImage = () => {
   };
 
   const handleImageSaveToggle = (image) => {
-    setSavedImageList(prevSaved =>
-      prevSaved.some(savedImage => savedImage.id === image.id)
+    setSavedImageList(prevSaved => {
+      const isSaved = prevSaved.some(savedImage => savedImage.id === image.id);
+      const updatedSavedImages = isSaved
         ? prevSaved.filter(savedImage => savedImage.id !== image.id)
-        : [...prevSaved, image]
-    );
+        : [...prevSaved, image];
 
-    // Atualizar o localStorage com a lista de imagens salvas
-    localStorage.setItem('savedImages', JSON.stringify(savedImageList));
+      // Atualizar o localStorage
+      localStorage.setItem('savedImages', JSON.stringify(updatedSavedImages));
+      return updatedSavedImages;
+    });
   };
 
   const handleLoadMore = () => {
@@ -88,12 +90,12 @@ const GalleryImage = () => {
       </div>
       <button
         onClick={handleLoadMore}
-        className="mt-4 block mx-auto bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700"
+        className="mt-4 block mx-auto bg-green-500 text-white px-3 py-1 rounded hover:bg-green-700"
       >
         Carregar Mais Imagens
       </button>
       <Link to="/saved" className="mt-4 block text-center">
-        <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700">
+        <button className="transition duration-300 ease-in-out bg-green-500 text-white px-3 py-1 rounded hover:bg-green-700">
           Ver Favoritos
         </button>
       </Link>

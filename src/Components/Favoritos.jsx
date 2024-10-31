@@ -17,8 +17,8 @@ const Favoritos = () => {
   const [savedImages, setSavedImages] = useState([]);
 
   useEffect(() => {
-    const images = JSON.parse(localStorage.getItem('savedImages')) || [];
-    setSavedImages(images);
+    const images = JSON.parse(localStorage.getItem('savedImages'));
+    setSavedImages(Array.isArray(images) ? images : []); // Certifica-se que é um array
   }, []);
 
   const handleToggleSave = (image) => {
@@ -35,7 +35,7 @@ const Favoritos = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-gray-800 rounded shadow-lg">
+    <div className="p-4 bg-gradient-to-r from-blue-600 to-blue-400 shadow-lg rounded">
       <h1 className="text-3xl font-bold mb-4 text-center text-white">FAVORITAS</h1>
       {savedImages.length === 0 ? (
         <p className="text-center text-gray-300">SEM FAVORITAS</p>
@@ -61,3 +61,5 @@ const Favoritos = () => {
 };
 
 export default Favoritos;
+
+
