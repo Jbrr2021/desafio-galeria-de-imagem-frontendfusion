@@ -1,13 +1,12 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    "./index.html", // Verifica o arquivo HTML na raiz do projeto
-    "./src/**/*.{js,ts,jsx,tsx}", // Verifica arquivos JavaScript e TypeScript dentro da pasta src
+      "./index.html",
+      "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+      extend: {},
   },
   plugins: [],
-}
+};
 
 

@@ -1,54 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import Image from './Image';
-import fetchData from '../utils/fetchdata';
-import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai'
+import fetchData from '../util/fetchdata'; // Verifique se o caminho está correto
+import Image from './Image'; // Verifique se o componente Image está correto
 
-function ImageCard({ heading, id, setPhoto }) {
-    const [data, setData] = useState([]);
+function ImageCard({ heading }) {
+  const [photos, setPhotos] = useState([]);
 
+  useEffect(() => {
+    fetchData(setPhotos, 1); // Carrega a primeira página
+  }, []);
 
-    const [offset, setOffset] = useState(0);
-    const handleNextClick = () => {
-        setOffset(offset + 20);
-    };
-
-    const handlePreviousClick = () => {
-        if (offset >= 20) {
-            setOffset(offset - 20);
-        }
-    };
-
-    useEffect(() => {
-        fetchData(setData, offset);
-    }, [offset]);
-
-    return (
-        <>
-            <h1 className='text-center my-6 mt-10 sm:my-14 text-3xl md:text-5xl'>{heading}</h1>
-            <div className="grid gap-4 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
-                {data.photos && data.photos.map(photo => (
-                    <Image key={photo.id} id={photo.id} url={photo.url} title={photo.title} author={photo.author} location={photo.location} category={photo.category} />
-                ))}
-            </div>
-
-            <div className="fixed bottom-80 top-96 flex justify-between right-1  left-1">
-                <button
-                    onClick={handlePreviousClick}
-                    disabled={offset === 0}
-                    className="px-4 text-3xl hover:bg-fuchsia-300 hover:text-2xl rounded-e-3xl mr-2"
-                >
-                    <AiOutlineDoubleLeft />
-                </button>
-                <button
-                    onClick={handleNextClick}
-                    disabled={!data.photos || data.photos.length < 20}
-                    className="px-4 text-3xl hover:bg-fuchsia-300 hover:text-2xl rounded-s-3xl"
-                >
-                    <AiOutlineDoubleRight />
-                </button>
-            </div>
-        </>
-    );
+  return (
+    <div className='bg-blue-900 text-white py-10 px-2 lg:p-10 rounded-2xl'>
+      <h1 className='text-center text-yellow-600 underline decoration-dashed my-6 text-3xl md:text-5xl'>{heading}</h1>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+        {photos.map(photo => (
+          <Image 
+            key={photo.id} 
+            id={photo.id} 
+            download_url={photo.download_url} 
+            author={photo.author} 
+            className="custom-box-shadow rounded-3xl"
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default ImageCard;
+
+
